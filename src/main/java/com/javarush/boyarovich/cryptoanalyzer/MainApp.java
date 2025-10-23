@@ -50,10 +50,10 @@ public class MainApp {
                     decrypt(cipher, fileManager);
                     break;
                 case 3:
-                    System.out.println("Brute force (реализуйте логику)");
+                    System.out.println("Не реализовано");
                     break;
                 case 4:
-                    System.out.println("Статистический анализ (реализуйте логику)");
+                    System.out.println("Не реализовано");
                     break;
                 case 0:
                     System.out.println("Вы вышли из приложения");
