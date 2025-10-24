@@ -50,7 +50,7 @@ public class MainApp {
                     decrypt(cipher, fileManager);
                     break;
                 case 3:
-                    System.out.println("Не реализовано");
+                    decryptByBruteForce(cipher, fileManager);
                     break;
                 case 4:
                     System.out.println("Не реализовано");
@@ -129,6 +129,32 @@ public class MainApp {
             fileManager.writeFile(decryptedText, outPath);
         } catch (IOException e) {
             System.out.println("Файл не найден");
+        }
+    }
+
+    private static void decryptByBruteForce(Cipher cipher, FileManager fileManager) {
+        System.out.print("Путь к входному файлу: ");
+        String inPath = scanner.nextLine().trim();
+        Path in = Path.of(inPath);
+
+        if (!Files.exists(in)) {
+            System.out.println("Файл не найден");
+            return;
+        }
+
+        Path parent = in.getParent();
+
+        for (int i = 0; i < ALPHABET.length; i++) {
+            Path out = parent.resolve("decrypted_" + i);
+            String outPath = out.toString();
+
+            try {
+                String result = fileManager.readFile(inPath);
+                String decryptedText = cipher.decrypt(result, i);
+                fileManager.writeFile(decryptedText, outPath);
+            } catch (IOException e) {
+                System.out.println("Файл не найден");
+            }
         }
     }
 }
