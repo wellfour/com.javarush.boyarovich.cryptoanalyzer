@@ -11,6 +11,7 @@ public class Cipher {
     public String encrypt(String text, int shift) {
         char[] chars = text.toCharArray();
         StringBuilder sb = new StringBuilder();
+        boolean detect = false;
 
         for (int i = 0; i < chars.length; i++) {
             for (int j = 0; j < alphabet.length; j++) {
@@ -20,9 +21,14 @@ public class Cipher {
                         index += alphabet.length;
                     }
                     sb.append(alphabet[index]);
+                    detect = true;
                     break;
                 }
             }
+            if (!detect) {
+                sb.append(chars[i]);
+            }
+            detect = false;
         }
         return sb.toString();
     }
@@ -30,6 +36,7 @@ public class Cipher {
     public String decrypt(String encryptedText, int shift) {
         char[] chars = encryptedText.toCharArray();
         StringBuilder sb = new StringBuilder();
+        boolean detect = false;
 
         for (int i = 0; i < chars.length; i++) {
             for (int j = 0; j < alphabet.length; j++) {
@@ -39,9 +46,14 @@ public class Cipher {
                         index += alphabet.length;
                     }
                     sb.append(alphabet[index]);
+                    detect = true;
                     break;
                 }
             }
+            if (!detect) {
+                sb.append(chars[i]);
+            }
+            detect = false;
         }
         return sb.toString();
     }
