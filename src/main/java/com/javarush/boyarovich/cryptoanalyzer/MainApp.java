@@ -53,10 +53,10 @@ public class MainApp {
                     decryptByBruteForce(cipher, fileManager);
                     break;
                 case 4:
-                    System.out.println("Не реализовано");
+                    System.out.println("Не реализовано.");
                     break;
                 case 0:
-                    System.out.println("Вы вышли из приложения");
+                    System.out.println("Вы вышли из приложения.");
                     return;
                 default:
                     System.out.println("Введите цифру из списка!");
